@@ -1,0 +1,29 @@
+{
+  "title": "Get MATIC Balance for an Address",
+  "description": "Example request and response for getting native MATIC balance on Polygon PoS using the Etherscan V2 API.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.etherscan.io/v2/api",
+    "parameters": {
+      "chainid": "137",
+      "module": "account",
+      "action": "balance",
+      "address": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
+      "tag": "latest",
+      "apikey": "YourApiKeyToken"
+    },
+    "curl": "curl 'https://api.etherscan.io/v2/api?chainid=137&module=account&action=balance&address=0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae&tag=latest&apikey=YourApiKeyToken'"
+  },
+  "response": {
+    "status": "200 OK",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "status": "1",
+      "message": "OK",
+      "result": "40807168564070000000000"
+    }
+  },
+  "notes": "The result is in wei (10^-18 MATIC). Divide by 10^18 to get MATIC. 40807168564070000000000 wei = ~40807.17 MATIC."
+}

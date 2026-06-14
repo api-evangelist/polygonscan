@@ -1,0 +1,28 @@
+{
+  "title": "Get Contract ABI",
+  "description": "Example request and response for retrieving the ABI of a verified smart contract on Polygon PoS.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.etherscan.io/v2/api",
+    "parameters": {
+      "chainid": "137",
+      "module": "contract",
+      "action": "getabi",
+      "address": "0x0000000000000000000000000000000000001010",
+      "apikey": "YourApiKeyToken"
+    },
+    "curl": "curl 'https://api.etherscan.io/v2/api?chainid=137&module=contract&action=getabi&address=0x0000000000000000000000000000000000001010&apikey=YourApiKeyToken'"
+  },
+  "response": {
+    "status": "200 OK",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "status": "1",
+      "message": "OK",
+      "result": "[{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"}],\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"type\":\"function\"}]"
+    }
+  },
+  "notes": "The result is a JSON-encoded string of the contract ABI. Parse it with JSON.parse() to get a usable ABI array. Only verified contracts return an ABI - unverified contracts return NOTOK with an error message."
+}

@@ -31,7 +31,7 @@ apis:
       - type: Documentation
         url: https://docs.etherscan.io/etherscan-v2
       - type: OpenAPI
-        url: https://polygonscan.com/apis
+        url: openapi/openapi.json
       - type: Authentication
         url: https://polygonscan.com/myapikey
       - type: RateLimits
@@ -46,6 +46,10 @@ apis:
         url: rate-limits/rate-limits.yml
       - type: x-finops
         url: finops/finops.yml
+      - type: x-json-schema
+        url: json-schema/api-response.json
+      - type: x-json-ld
+        url: json-ld/jsonld.json
     contact:
       - FN: PolygonScan Support
         email: apisupport@etherscan.io

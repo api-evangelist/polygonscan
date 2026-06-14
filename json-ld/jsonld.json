@@ -1,0 +1,122 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "polygonscan": "https://polygonscan.com/",
+    "etherscan": "https://docs.etherscan.io/",
+    "blockchain": "https://schema.org/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "provider": "schema:provider",
+    "documentation": "schema:documentation",
+    "PolygonScanAPI": {
+      "@id": "polygonscan:api",
+      "@type": "schema:WebAPI"
+    },
+    "chainId": {
+      "@id": "polygonscan:chainId",
+      "@type": "schema:Number"
+    },
+    "network": {
+      "@id": "polygonscan:network",
+      "@type": "schema:Text"
+    },
+    "blockchainAddress": {
+      "@id": "polygonscan:address",
+      "@type": "schema:Text"
+    },
+    "transactionHash": {
+      "@id": "polygonscan:txhash",
+      "@type": "schema:Text"
+    },
+    "contractAddress": {
+      "@id": "polygonscan:contractAddress",
+      "@type": "schema:Text"
+    },
+    "tokenBalance": {
+      "@id": "polygonscan:tokenBalance",
+      "@type": "schema:Number"
+    },
+    "gasPrice": {
+      "@id": "polygonscan:gasPrice",
+      "@type": "schema:Number"
+    },
+    "blockNumber": {
+      "@id": "polygonscan:blockNumber",
+      "@type": "schema:Number"
+    },
+    "timestamp": {
+      "@id": "polygonscan:timestamp",
+      "@type": "schema:DateTime"
+    },
+    "tokenSymbol": {
+      "@id": "polygonscan:tokenSymbol",
+      "@type": "schema:Text"
+    },
+    "tokenName": {
+      "@id": "polygonscan:tokenName",
+      "@type": "schema:Text"
+    },
+    "tokenDecimal": {
+      "@id": "polygonscan:tokenDecimal",
+      "@type": "schema:Number"
+    },
+    "maticPrice": {
+      "@id": "polygonscan:maticPrice",
+      "@type": "schema:PriceSpecification"
+    }
+  },
+  "@type": "schema:WebAPI",
+  "@id": "https://polygonscan.com/apis",
+  "name": "PolygonScan API",
+  "description": "REST API for querying Polygon PoS blockchain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics via Etherscan V2 unified endpoint.",
+  "url": "https://polygonscan.com/",
+  "provider": {
+    "@type": "schema:Organization",
+    "name": "PolygonScan",
+    "url": "https://polygonscan.com/",
+    "contactPoint": {
+      "@type": "schema:ContactPoint",
+      "email": "apisupport@etherscan.io",
+      "contactType": "API Support"
+    }
+  },
+  "documentation": "https://docs.etherscan.io/etherscan-v2",
+  "termsOfService": "https://polygonscan.com/apiterms",
+  "offers": {
+    "@type": "schema:Offer",
+    "url": "https://polygonscan.com/apis"
+  },
+  "additionalProperty": [
+    {
+      "@type": "schema:PropertyValue",
+      "name": "chainId",
+      "value": "137"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "name": "network",
+      "value": "Polygon PoS"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "name": "baseURL",
+      "value": "https://api.etherscan.io/v2/api"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "name": "legacyBaseURL",
+      "value": "https://api.polygonscan.com/api"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "name": "testnetBaseURL",
+      "value": "https://api-amoy.polygonscan.com/api"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "name": "testnetChainId",
+      "value": "80002"
+    }
+  ]
+}

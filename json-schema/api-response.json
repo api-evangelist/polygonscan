@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://polygonscan.com/schema/api-response",
+  "title": "PolygonScan API Response",
+  "description": "Standard response envelope returned by all PolygonScan API endpoints",
+  "type": "object",
+  "required": ["status", "message", "result"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "1 for success, 0 for error",
+      "enum": ["0", "1"]
+    },
+    "message": {
+      "type": "string",
+      "description": "OK on success, NOTOK or error description on failure",
+      "examples": ["OK", "NOTOK", "No transactions found", "Invalid API Key"]
+    },
+    "result": {
+      "description": "Response payload - type varies by endpoint. Can be a string, array, or object."
+    }
+  },
+  "definitions": {
+    "Address": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{40}$",
+      "description": "Ethereum/Polygon checksummed or unchecked address"
+    },
+    "TxHash": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$",
+      "description": "Transaction hash"
+    },
+    "Wei": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "Amount in wei (smallest unit)"
+    },
+    "BlockNumber": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "Block number as decimal string"
+    },
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "blockNumber": {"$ref": "#/definitions/BlockNumber"},
+        "blockHash": {"type": "string"},
+        "timeStamp": {"type": "string", "description": "Unix timestamp in seconds"},
+        "hash": {"$ref": "#/definitions/TxHash"},
+        "nonce": {"type": "string"},
+        "transactionIndex": {"type": "string"},
+        "from": {"$ref": "#/definitions/Address"},
+        "to": {"$ref": "#/definitions/Address"},
+        "value": {"$ref": "#/definitions/Wei"},
+        "gas": {"type": "string"},
+        "gasPrice": {"type": "string"},
+        "input": {"type": "string"},
+        "methodId": {"type": "string"},
+        "functionName": {"type": "string"},
+        "contractAddress": {"type": "string"},
+        "cumulativeGasUsed": {"type": "string"},
+        "txreceipt_status": {"type": "string", "enum": ["", "0", "1"]},
+        "gasUsed": {"type": "string"},
+        "confirmations": {"type": "string"},
+        "isError": {"type": "string", "enum": ["0", "1"]}
+      }
+    },
+    "TokenTransfer": {
+      "type": "object",
+      "properties": {
+        "blockNumber": {"$ref": "#/definitions/BlockNumber"},
+        "timeStamp": {"type": "string"},
+        "hash": {"$ref": "#/definitions/TxHash"},
+        "nonce": {"type": "string"},
+        "blockHash": {"type": "string"},
+        "from": {"$ref": "#/definitions/Address"},
+        "to": {"$ref": "#/definitions/Address"},
+        "contractAddress": {"$ref": "#/definitions/Address"},
+        "value": {"type": "string"},
+        "tokenName": {"type": "string"},
+        "tokenSymbol": {"type": "string"},
+        "tokenDecimal": {"type": "string"},
+        "transactionIndex": {"type": "string"},
+        "gas": {"type": "string"},
+        "gasPrice": {"type": "string"},
+        "gasUsed": {"type": "string"},
+        "cumulativeGasUsed": {"type": "string"},
+        "input": {"type": "string"},
+        "methodId": {"type": "string"},
+        "functionName": {"type": "string"},
+        "confirmations": {"type": "string"}
+      }
+    },
+    "EventLog": {
+      "type": "object",
+      "properties": {
+        "address": {"$ref": "#/definitions/Address"},
+        "topics": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Array of 0x-prefixed 32-byte topic hashes"
+        },
+        "data": {"type": "string"},
+        "blockNumber": {"type": "string"},
+        "blockHash": {"type": "string"},
+        "timeStamp": {"type": "string"},
+        "gasPrice": {"type": "string"},
+        "gasUsed": {"type": "string"},
+        "logIndex": {"type": "string"},
+        "transactionHash": {"$ref": "#/definitions/TxHash"},
+        "transactionIndex": {"type": "string"}
+      }
+    },
+    "GasOracle": {
+      "type": "object",
+      "properties": {
+        "LastBlock": {"$ref": "#/definitions/BlockNumber"},
+        "SafeGasPrice": {"type": "string", "description": "Gas price in Gwei for safe (slow) confirmation"},
+        "ProposeGasPrice": {"type": "string", "description": "Gas price in Gwei for proposed (standard) confirmation"},
+        "FastGasPrice": {"type": "string", "description": "Gas price in Gwei for fast confirmation"},
+        "suggestBaseFee": {"type": "string", "description": "Current base fee suggestion"},
+        "gasUsedRatio": {"type": "string", "description": "Comma-separated gas used ratios for recent blocks"}
+      }
+    },
+    "ContractSource": {
+      "type": "object",
+      "properties": {
+        "SourceCode": {"type": "string"},
+        "ABI": {"type": "string"},
+        "ContractName": {"type": "string"},
+        "CompilerVersion": {"type": "string"},
+        "CompilerType": {"type": "string", "enum": ["", "Solidity", "Vyper", "Stylus"]},
+        "OptimizationUsed": {"type": "string"},
+        "Runs": {"type": "string"},
+        "ConstructorArguments": {"type": "string"},
+        "EVMVersion": {"type": "string"},
+        "Library": {"type": "string"},
+        "ContractFileName": {"type": "string"},
+        "LicenseType": {"type": "string"},
+        "Proxy": {"type": "string"},
+        "Implementation": {"type": "string"},
+        "SwarmSource": {"type": "string"}
+      }
+    },
+    "TokenBalance": {
+      "type": "object",
+      "properties": {
+        "TokenAddress": {"$ref": "#/definitions/Address"},
+        "TokenName": {"type": "string"},
+        "TokenSymbol": {"type": "string"},
+        "TokenQuantity": {"type": "string"},
+        "TokenDivisor": {"type": "string"}
+      }
+    },
+    "BlockReward": {
+      "type": "object",
+      "properties": {
+        "blockNumber": {"$ref": "#/definitions/BlockNumber"},
+        "timeStamp": {"type": "string"},
+        "blockMiner": {"$ref": "#/definitions/Address"},
+        "blockReward": {"$ref": "#/definitions/Wei"},
+        "uncles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "miner": {"$ref": "#/definitions/Address"},
+              "unclePosition": {"type": "string"},
+              "blockreward": {"$ref": "#/definitions/Wei"}
+            }
+          }
+        },
+        "uncleInclusionReward": {"$ref": "#/definitions/Wei"}
+      }
+    }
+  }
+}

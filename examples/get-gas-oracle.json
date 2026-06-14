@@ -1,0 +1,34 @@
+{
+  "title": "Get Gas Oracle",
+  "description": "Example request and response for the Polygon PoS gas oracle, which provides safe, proposed, and fast gas prices.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.etherscan.io/v2/api",
+    "parameters": {
+      "chainid": "137",
+      "module": "gastracker",
+      "action": "gasoracle",
+      "apikey": "YourApiKeyToken"
+    },
+    "curl": "curl 'https://api.etherscan.io/v2/api?chainid=137&module=gastracker&action=gasoracle&apikey=YourApiKeyToken'"
+  },
+  "response": {
+    "status": "200 OK",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "status": "1",
+      "message": "OK",
+      "result": {
+        "LastBlock": "50000000",
+        "SafeGasPrice": "30",
+        "ProposeGasPrice": "35",
+        "FastGasPrice": "50",
+        "suggestBaseFee": "28.5",
+        "gasUsedRatio": "0.45,0.52,0.38,0.61,0.49"
+      }
+    }
+  },
+  "notes": "Gas prices are in Gwei. SafeGasPrice is slower but cheaper. FastGasPrice is faster but more expensive. suggestBaseFee is the current EIP-1559 base fee."
+}

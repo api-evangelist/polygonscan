@@ -1,0 +1,555 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PolygonScan API",
+    "version": "2.0",
+    "description": "REST API for querying Polygon PoS blockchain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics via Etherscan V2 unified endpoint with chainid 137.",
+    "termsOfService": "https://polygonscan.com/apiterms",
+    "contact": {
+      "name": "PolygonScan Support",
+      "email": "apisupport@etherscan.io",
+      "url": "https://polygonscan.com/contactus"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.etherscan.io/v2/api",
+      "description": "Etherscan V2 unified endpoint (use chainid=137 for Polygon PoS)"
+    },
+    {
+      "url": "https://api.polygonscan.com/api",
+      "description": "PolygonScan legacy endpoint"
+    }
+  ],
+  "externalDocs": {
+    "description": "Etherscan V2 API Documentation",
+    "url": "https://docs.etherscan.io/etherscan-v2"
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "apikey",
+        "description": "API key obtained from https://polygonscan.com/myapikey"
+      }
+    },
+    "parameters": {
+      "chainid": {
+        "name": "chainid",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "default": "137"
+        },
+        "description": "Chain ID. Use 137 for Polygon PoS mainnet, 80002 for Amoy testnet."
+      },
+      "page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 1
+        },
+        "description": "Page number for pagination."
+      },
+      "offset": {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 100
+        },
+        "description": "Number of records per page."
+      },
+      "sort": {
+        "name": "sort",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["asc", "desc"],
+          "default": "asc"
+        },
+        "description": "Sort direction: asc (oldest first) or desc (newest first)."
+      },
+      "startblock": {
+        "name": "startblock",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0
+        },
+        "description": "Starting block number to search from."
+      },
+      "endblock": {
+        "name": "endblock",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 999999999
+        },
+        "description": "Ending block number to search to."
+      }
+    },
+    "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "1 for success, 0 for error.",
+            "example": "1"
+          },
+          "message": {
+            "type": "string",
+            "description": "OK on success, NOTOK on error.",
+            "example": "OK"
+          },
+          "result": {
+            "description": "Result data - type varies by endpoint."
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "blockNumber": {"type": "string"},
+          "blockHash": {"type": "string"},
+          "timeStamp": {"type": "string"},
+          "hash": {"type": "string"},
+          "nonce": {"type": "string"},
+          "transactionIndex": {"type": "string"},
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "value": {"type": "string"},
+          "gas": {"type": "string"},
+          "gasPrice": {"type": "string"},
+          "input": {"type": "string"},
+          "methodId": {"type": "string"},
+          "functionName": {"type": "string"},
+          "contractAddress": {"type": "string"},
+          "cumulativeGasUsed": {"type": "string"},
+          "txreceipt_status": {"type": "string"},
+          "gasUsed": {"type": "string"},
+          "confirmations": {"type": "string"},
+          "isError": {"type": "string"}
+        }
+      },
+      "TokenTransfer": {
+        "type": "object",
+        "properties": {
+          "blockNumber": {"type": "string"},
+          "timeStamp": {"type": "string"},
+          "hash": {"type": "string"},
+          "nonce": {"type": "string"},
+          "blockHash": {"type": "string"},
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "contractAddress": {"type": "string"},
+          "value": {"type": "string"},
+          "tokenName": {"type": "string"},
+          "tokenSymbol": {"type": "string"},
+          "tokenDecimal": {"type": "string"},
+          "transactionIndex": {"type": "string"},
+          "gas": {"type": "string"},
+          "gasPrice": {"type": "string"},
+          "gasUsed": {"type": "string"},
+          "cumulativeGasUsed": {"type": "string"},
+          "input": {"type": "string"},
+          "methodId": {"type": "string"},
+          "functionName": {"type": "string"},
+          "confirmations": {"type": "string"}
+        }
+      },
+      "EventLog": {
+        "type": "object",
+        "properties": {
+          "address": {"type": "string"},
+          "topics": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "data": {"type": "string"},
+          "blockNumber": {"type": "string"},
+          "blockHash": {"type": "string"},
+          "timeStamp": {"type": "string"},
+          "gasPrice": {"type": "string"},
+          "gasUsed": {"type": "string"},
+          "logIndex": {"type": "string"},
+          "transactionHash": {"type": "string"},
+          "transactionIndex": {"type": "string"}
+        }
+      },
+      "GasOracle": {
+        "type": "object",
+        "properties": {
+          "LastBlock": {"type": "string"},
+          "SafeGasPrice": {"type": "string"},
+          "ProposeGasPrice": {"type": "string"},
+          "FastGasPrice": {"type": "string"},
+          "suggestBaseFee": {"type": "string"},
+          "gasUsedRatio": {"type": "string"}
+        }
+      },
+      "ContractSource": {
+        "type": "object",
+        "properties": {
+          "SourceCode": {"type": "string"},
+          "ABI": {"type": "string"},
+          "ContractName": {"type": "string"},
+          "CompilerVersion": {"type": "string"},
+          "CompilerType": {"type": "string"},
+          "OptimizationUsed": {"type": "string"},
+          "Runs": {"type": "string"},
+          "ConstructorArguments": {"type": "string"},
+          "EVMVersion": {"type": "string"},
+          "Library": {"type": "string"},
+          "ContractFileName": {"type": "string"},
+          "LicenseType": {"type": "string"},
+          "Proxy": {"type": "string"},
+          "Implementation": {"type": "string"},
+          "SwarmSource": {"type": "string"}
+        }
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "PolygonScan API",
+        "description": "All PolygonScan API calls use this single endpoint. The specific action is determined by the module and action query parameters.",
+        "operationId": "apiCall",
+        "tags": ["API"],
+        "parameters": [
+          {
+            "name": "module",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["account", "contract", "transaction", "block", "logs", "gastracker", "stats", "token"]
+            },
+            "description": "API module to call."
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Action to perform within the selected module."
+          },
+          {
+            "$ref": "#/components/parameters/chainid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-polygonscan-modules": {
+    "account": {
+      "description": "Account and balance related actions",
+      "actions": {
+        "balance": {
+          "description": "Get native MATIC balance for a single address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "tag"],
+            "address": "Polygon address to query",
+            "tag": "latest or block number in hex (default: latest)"
+          },
+          "response": "Native token balance in wei as a string"
+        },
+        "balancemulti": {
+          "description": "Get native MATIC balances for multiple addresses (max 20)",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "tag"],
+            "address": "Comma-separated list of addresses (max 20)"
+          },
+          "response": "Array of {account, balance} objects"
+        },
+        "txlist": {
+          "description": "Get normal transactions by address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "startblock", "endblock", "page", "offset", "sort"]
+          },
+          "response": "Array of transaction objects"
+        },
+        "txlistinternal": {
+          "description": "Get internal transactions by address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "startblock", "endblock", "page", "offset", "sort"]
+          },
+          "response": "Array of internal transaction objects"
+        },
+        "tokentx": {
+          "description": "Get ERC-20 token transfer events by address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "contractaddress", "startblock", "endblock", "page", "offset", "sort"]
+          },
+          "response": "Array of ERC-20 token transfer objects"
+        },
+        "tokennfttx": {
+          "description": "Get ERC-721 NFT transfer events by address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "contractaddress", "startblock", "endblock", "page", "offset", "sort"]
+          },
+          "response": "Array of ERC-721 transfer objects"
+        },
+        "token1155tx": {
+          "description": "Get ERC-1155 token transfer events by address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "contractaddress", "startblock", "endblock", "page", "offset", "sort"]
+          },
+          "response": "Array of ERC-1155 transfer objects"
+        },
+        "addresstokenbalance": {
+          "description": "Get ERC-20 token holdings for an address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "page", "offset"]
+          },
+          "response": "Array of token balance objects"
+        },
+        "addresstokennftbalance": {
+          "description": "Get ERC-721 NFT holdings for an address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "page", "offset"]
+          },
+          "response": "Array of NFT balance objects"
+        },
+        "addresstokennftinventory": {
+          "description": "Get ERC-721 NFT inventory (token IDs) for an address",
+          "parameters": {
+            "required": ["module", "action", "address", "contractaddress", "apikey"],
+            "optional": ["chainid", "page", "offset"]
+          },
+          "response": "Array of NFT inventory objects with token IDs"
+        },
+        "tokenbalance": {
+          "description": "Get ERC-20 token account balance for a specific contract",
+          "parameters": {
+            "required": ["module", "action", "contractaddress", "address", "apikey"],
+            "optional": ["chainid", "tag"]
+          },
+          "response": "Token balance as a string"
+        },
+        "getminedblocks": {
+          "description": "Get list of blocks validated by an address",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid", "blocktype", "page", "offset"]
+          },
+          "response": "Array of mined block objects"
+        }
+      }
+    },
+    "contract": {
+      "description": "Smart contract related actions",
+      "actions": {
+        "getabi": {
+          "description": "Get ABI for a verified smart contract",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Contract ABI as a JSON-encoded string"
+        },
+        "getsourcecode": {
+          "description": "Get source code for a verified smart contract",
+          "parameters": {
+            "required": ["module", "action", "address", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Array of contract source objects with SourceCode, ABI, ContractName, CompilerVersion, etc."
+        },
+        "getcontractcreation": {
+          "description": "Get contract creator address and creation transaction hash",
+          "parameters": {
+            "required": ["module", "action", "contractaddresses", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Array of contract creation objects"
+        },
+        "verifysourcecode": {
+          "description": "Submit Solidity source code for verification",
+          "parameters": {
+            "required": ["module", "action", "contractaddress", "sourceCode", "codeformat", "contractname", "compilerversion", "apikey"],
+            "optional": ["chainid", "optimizationUsed", "runs", "constructorArguements", "evmversion", "licenseType"]
+          },
+          "response": "GUID for checking verification status"
+        },
+        "checkverifystatus": {
+          "description": "Check contract verification submission status",
+          "parameters": {
+            "required": ["module", "action", "guid", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Verification status string"
+        }
+      }
+    },
+    "transaction": {
+      "description": "Transaction status actions",
+      "actions": {
+        "getstatus": {
+          "description": "Check contract execution status (if there were errors during execution)",
+          "parameters": {
+            "required": ["module", "action", "txhash", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with isError and errDescription fields"
+        },
+        "gettxreceiptstatus": {
+          "description": "Check transaction receipt status (only for post-Byzantium fork transactions)",
+          "parameters": {
+            "required": ["module", "action", "txhash", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with status field (1 for success, 0 for failed)"
+        }
+      }
+    },
+    "block": {
+      "description": "Block data actions",
+      "actions": {
+        "getblockreward": {
+          "description": "Get block and uncle rewards by block number",
+          "parameters": {
+            "required": ["module", "action", "blockno", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Block reward object with blockNumber, timeStamp, blockMiner, blockReward, uncles, uncleInclusionReward"
+        },
+        "getblockcountdown": {
+          "description": "Get estimated time remaining until a block is validated",
+          "parameters": {
+            "required": ["module", "action", "blockno", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with CurrentBlock, CountdownBlock, RemainingBlock, EstimateTimeInSec"
+        },
+        "getblocknobytime": {
+          "description": "Get block number closest to a provided Unix timestamp",
+          "parameters": {
+            "required": ["module", "action", "timestamp", "closest", "apikey"],
+            "optional": ["chainid"],
+            "timestamp": "Unix timestamp in seconds",
+            "closest": "before or after"
+          },
+          "response": "Block number as a string"
+        }
+      }
+    },
+    "logs": {
+      "description": "Event log actions",
+      "actions": {
+        "getLogs": {
+          "description": "Get event logs by address and/or block range",
+          "parameters": {
+            "required": ["module", "action", "apikey"],
+            "at_least_one": ["address", "topic0"],
+            "optional": ["chainid", "address", "fromBlock", "toBlock", "topic0", "topic1", "topic2", "topic3", "topic0_1_opr", "topic1_2_opr", "topic2_3_opr", "topic0_2_opr", "page", "offset"]
+          },
+          "response": "Array of event log objects"
+        }
+      }
+    },
+    "gastracker": {
+      "description": "Gas price estimation actions",
+      "actions": {
+        "gasoracle": {
+          "description": "Get gas price oracle with safe/proposed/fast gas prices",
+          "parameters": {
+            "required": ["module", "action", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with LastBlock, SafeGasPrice, ProposeGasPrice, FastGasPrice, suggestBaseFee, gasUsedRatio"
+        },
+        "gasestimate": {
+          "description": "Get estimated confirmation time for a given gas price",
+          "parameters": {
+            "required": ["module", "action", "gasprice", "apikey"],
+            "optional": ["chainid"],
+            "gasprice": "Gas price in wei"
+          },
+          "response": "Estimated wait time in seconds"
+        }
+      }
+    },
+    "stats": {
+      "description": "Network statistics actions",
+      "actions": {
+        "maticprice": {
+          "description": "Get latest MATIC price in BTC and USD",
+          "parameters": {
+            "required": ["module", "action", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with maticbtc, maticusd, maticbtc_timestamp, maticusd_timestamp"
+        },
+        "tokensupply": {
+          "description": "Get total supply of an ERC-20 token",
+          "parameters": {
+            "required": ["module", "action", "contractaddress", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Token total supply as a string"
+        },
+        "tokeninfo": {
+          "description": "Get token information including name, symbol, decimals",
+          "parameters": {
+            "required": ["module", "action", "contractaddress", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Array of token info objects"
+        },
+        "nodecount": {
+          "description": "Get total number of nodes in Polygon network",
+          "parameters": {
+            "required": ["module", "action", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Object with UTCDate and TotalNodeCount"
+        },
+        "dailytx": {
+          "description": "Get daily transaction count (PRO endpoint)",
+          "parameters": {
+            "required": ["module", "action", "startdate", "enddate", "sort", "apikey"],
+            "optional": ["chainid"]
+          },
+          "response": "Array of daily transaction count objects"
+        }
+      }
+    }
+  }
+}
