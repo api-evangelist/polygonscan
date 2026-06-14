@@ -1,0 +1,79 @@
+name: PolygonScan
+description: PolygonScan is the leading blockchain explorer, search, API, and analytics platform for the Polygon PoS network. It provides a REST API for querying transactions, token transfers, smart contract source code, ERC-20/ERC-721/ERC-1155 balances, gas prices, and network statistics on the Polygon blockchain (Chain ID 137). API access is unified under Etherscan API V2, enabling access with a single API key across 60+ EVM-compatible chains.
+image: https://polygonscan.com/images/svg/brands/main.svg?v=24.1.2.0
+tags:
+  - Blockchain
+  - Polygon
+  - Explorer
+  - Web3
+  - EVM
+  - Smart Contracts
+  - DeFi
+  - Cryptocurrency
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+apis:
+  - name: PolygonScan API
+    description: REST API for querying Polygon PoS blockchain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics via Etherscan V2 unified endpoint with chainid 137.
+    humanURL: https://polygonscan.com/apis
+    baseURL: https://api.etherscan.io/v2/api
+    tags:
+      - Blockchain
+      - Polygon
+      - Transactions
+      - Tokens
+      - Smart Contracts
+      - Gas Tracker
+      - Event Logs
+      - Statistics
+    properties:
+      - type: Documentation
+        url: https://docs.etherscan.io/etherscan-v2
+      - type: OpenAPI
+        url: https://polygonscan.com/apis
+      - type: Authentication
+        url: https://polygonscan.com/myapikey
+      - type: RateLimits
+        url: https://info.polygonscan.com/api-return-errors/
+      - type: Plans
+        url: https://polygonscan.com/apis
+      - type: TermsOfService
+        url: https://polygonscan.com/apiterms
+      - type: x-plans
+        url: plans/plans.yml
+      - type: x-rate-limits
+        url: rate-limits/rate-limits.yml
+      - type: x-finops
+        url: finops/finops.yml
+    contact:
+      - FN: PolygonScan Support
+        email: apisupport@etherscan.io
+    x-chainId: 137
+    x-network: Polygon PoS
+    x-legacyBaseURL: https://api.polygonscan.com/api
+    x-v2BaseURL: https://api.etherscan.io/v2/api
+    x-testnetBaseURL: https://api-amoy.polygonscan.com/api
+    x-testnetChainId: 80002
+
+common:
+  - type: Website
+    url: https://polygonscan.com/
+  - type: Documentation
+    url: https://docs.etherscan.io/etherscan-v2
+  - type: Signup
+    url: https://polygonscan.com/register
+  - type: Login
+    url: https://polygonscan.com/login
+  - type: Blog
+    url: https://polygonscan.com/blogs
+  - type: Status
+    url: https://etherscan.freshstatus.io/
+  - type: Terms
+    url: https://polygonscan.com/terms
+  - type: Privacy
+    url: https://polygonscan.com/privacypolicy
+  - type: Contact
+    url: https://polygonscan.com/contactus
+  - type: Twitter
+    url: https://twitter.com/polygonscan

@@ -1,0 +1,87 @@
+name: PolygonScan API Plans
+description: PolygonScan API plans are managed through Etherscan API V2 and offer a free community tier plus paid PRO tiers with higher rate limits, increased daily call quotas, and access to advanced PRO endpoints.
+provider: PolygonScan / Etherscan
+url: https://polygonscan.com/apis
+plans:
+  - name: Free
+    description: Free community tier suitable for development and low-volume use. No credit card required. Rate limited to 5 calls per second with 100,000 daily calls.
+    price: $0/month
+    rateLimitCallsPerSecond: 5
+    rateLimitDailyCallsMax: 100000
+    proEndpoints: false
+    features:
+      - Access to all standard API modules
+      - Accounts, Transactions, Contracts, Tokens, Blocks, Logs, Stats, Gas Tracker
+      - Up to 1,000 records per API call
+      - API key from polygonscan.com/myapikey
+      - Access via Etherscan V2 (chainid=137)
+
+  - name: Lite
+    description: Entry-level paid tier providing slightly higher throughput than free, suitable for small production applications.
+    price: $49/month
+    rateLimitCallsPerSecond: 5
+    rateLimitDailyCallsMax: 100000
+    proEndpoints: false
+    features:
+      - All Free tier features
+      - Priority support
+      - Managed via Etherscan V2 unified key
+
+  - name: Standard
+    description: Mid-tier plan with doubled throughput and access to PRO endpoints. Suitable for moderate production workloads.
+    price: $199/month
+    rateLimitCallsPerSecond: 10
+    rateLimitDailyCallsMax: 200000
+    proEndpoints: true
+    features:
+      - All Lite tier features
+      - PRO API endpoint access
+      - Token holder lists and counts
+      - Top holder identification
+      - Advanced analytics endpoints
+
+  - name: Advanced
+    description: Higher throughput plan for larger production applications requiring fast block explorer data.
+    price: $299/month
+    rateLimitCallsPerSecond: 20
+    rateLimitDailyCallsMax: 500000
+    proEndpoints: true
+    features:
+      - All Standard tier features
+      - 20 calls per second
+      - 500,000 daily calls
+
+  - name: Professional
+    description: High-volume plan for enterprise-level production applications with up to 1 million daily calls.
+    price: $399/month
+    rateLimitCallsPerSecond: 30
+    rateLimitDailyCallsMax: 1000000
+    proEndpoints: true
+    features:
+      - All Advanced tier features
+      - 30 calls per second
+      - 1,000,000 daily calls
+
+  - name: Pro Plus
+    description: Maximum standard plan tier providing 1.5 million daily calls at the highest call-per-second rate.
+    price: $899/month
+    rateLimitCallsPerSecond: 30
+    rateLimitDailyCallsMax: 1500000
+    proEndpoints: true
+    features:
+      - All Professional tier features
+      - 1,500,000 daily calls
+
+  - name: Dedicated / Custom
+    description: Enterprise custom tier with dedicated infrastructure. Rate limits and daily call quotas negotiated per contract.
+    price: Contact sales
+    rateLimitCallsPerSecond: custom
+    rateLimitDailyCallsMax: custom
+    proEndpoints: true
+    contactEmail: apisupport@etherscan.io
+    features:
+      - Custom rate limits
+      - Custom daily call quotas
+      - Dedicated infrastructure
+      - Enterprise SLA
+      - Priority support

@@ -1,0 +1,73 @@
+name: PolygonScan API FinOps
+description: Financial operations reference for the PolygonScan API (Etherscan V2, chainid=137). Covers cost tiers, cost-optimization strategies, and key cost drivers when querying Polygon PoS blockchain data.
+url: https://polygonscan.com/apis
+currency: USD
+billingCycle: monthly
+
+tiers:
+  - name: Free
+    monthlyPrice: 0
+    callsPerSecond: 5
+    callsPerDay: 100000
+    estimatedMonthlyCalls: 3000000
+    costPerThousandCalls: 0
+
+  - name: Lite
+    monthlyPrice: 49
+    callsPerSecond: 5
+    callsPerDay: 100000
+    estimatedMonthlyCalls: 3000000
+    costPerThousandCalls: 0.016
+
+  - name: Standard
+    monthlyPrice: 199
+    callsPerSecond: 10
+    callsPerDay: 200000
+    estimatedMonthlyCalls: 6000000
+    costPerThousandCalls: 0.033
+
+  - name: Advanced
+    monthlyPrice: 299
+    callsPerSecond: 20
+    callsPerDay: 500000
+    estimatedMonthlyCalls: 15000000
+    costPerThousandCalls: 0.020
+
+  - name: Professional
+    monthlyPrice: 399
+    callsPerSecond: 30
+    callsPerDay: 1000000
+    estimatedMonthlyCalls: 30000000
+    costPerThousandCalls: 0.013
+
+  - name: Pro Plus
+    monthlyPrice: 899
+    callsPerSecond: 30
+    callsPerDay: 1500000
+    estimatedMonthlyCalls: 45000000
+    costPerThousandCalls: 0.020
+
+costDrivers:
+  - name: API calls volume
+    description: Primary cost driver. Higher daily call volume requires upgrading to a paid tier.
+  - name: PRO endpoint access
+    description: Advanced endpoints (token holder lists, top holders, daily stats) are gated behind Standard tier and above.
+  - name: Throughput requirements
+    description: Applications requiring more than 5 calls per second must upgrade from the Free or Lite tier.
+  - name: Testnet vs mainnet
+    description: Both Polygon PoS mainnet (chainid=137) and Amoy testnet (chainid=80002) count against the same API key quota.
+
+optimizationTips:
+  - Batch balance queries using getmultibalance (up to 20 addresses per call) to reduce call counts.
+  - Cache responses for static data such as contract ABIs and source code to avoid redundant calls.
+  - Use pagination parameters (offset, page) efficiently — fetch up to 1,000 records per call.
+  - Implement exponential backoff on 429/rate-limit errors rather than retrying immediately.
+  - Consolidate multi-chain queries using Etherscan V2 unified endpoint to avoid maintaining separate API keys.
+  - Monitor daily usage via the API usage endpoint to avoid unexpected overages.
+  - Use the free tier for development and staging; promote to paid only for production traffic.
+
+contacts:
+  - type: billing
+    email: apisupport@etherscan.io
+  - type: enterprise
+    url: https://polygonscan.com/contactus

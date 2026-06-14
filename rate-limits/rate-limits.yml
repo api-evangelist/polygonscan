@@ -1,0 +1,76 @@
+name: PolygonScan API Rate Limits
+description: Rate limits enforced by the PolygonScan / Etherscan V2 API for Polygon PoS (chainid=137). Limits are per API key and apply across all API modules.
+url: https://info.polygonscan.com/api-return-errors/
+limits:
+  - plan: Free
+    callsPerSecond: 5
+    callsPerDay: 100000
+    maxRecordsPerCall: 1000
+    proEndpoints: false
+
+  - plan: Lite
+    callsPerSecond: 5
+    callsPerDay: 100000
+    maxRecordsPerCall: 1000
+    proEndpoints: false
+
+  - plan: Standard
+    callsPerSecond: 10
+    callsPerDay: 200000
+    maxRecordsPerCall: 1000
+    proEndpoints: true
+
+  - plan: Advanced
+    callsPerSecond: 20
+    callsPerDay: 500000
+    maxRecordsPerCall: 1000
+    proEndpoints: true
+
+  - plan: Professional
+    callsPerSecond: 30
+    callsPerDay: 1000000
+    maxRecordsPerCall: 1000
+    proEndpoints: true
+
+  - plan: Pro Plus
+    callsPerSecond: 30
+    callsPerDay: 1500000
+    maxRecordsPerCall: 1000
+    proEndpoints: true
+
+  - plan: Dedicated / Custom
+    callsPerSecond: custom
+    callsPerDay: custom
+    maxRecordsPerCall: 1000
+    proEndpoints: true
+
+errors:
+  - code: MAX_RATE_LIMIT
+    status: '0'
+    message: NOTOK
+    result: Max rate limit reached
+    description: Returned when the per-second rate limit is exceeded. Implement exponential backoff.
+
+  - code: MISSING_OR_INVALID_KEY
+    status: '1'
+    message: OK-Missing/Invalid API Key, rate limit of 1/5sec applied
+    result: varies
+    description: When no valid API key is supplied, a reduced rate of 1 call per 5 seconds is applied.
+
+  - code: INVALID_API_KEY
+    status: '0'
+    message: NOTOK
+    result: Invalid API Key
+    description: The provided API key does not match any registered key.
+
+  - code: TOO_MANY_INVALID_ATTEMPTS
+    status: '0'
+    message: NOTOK
+    result: Too many invalid api key attempts, please try again later
+    description: Temporary block placed on the IP after repeated invalid API key submissions.
+
+notes:
+  - Without an API key, rate is throttled to 1 call per 5 seconds.
+  - The legacy api.polygonscan.com endpoint has been deprecated as of August 15, 2025.
+  - V2 requests must include chainid=137 for Polygon PoS mainnet.
+  - Amoy testnet uses chainid=80002 or api-amoy.polygonscan.com.
