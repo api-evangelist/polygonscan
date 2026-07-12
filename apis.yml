@@ -61,6 +61,12 @@ apis:
     x-testnetChainId: 80002
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/polygonscan-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/polygonscan-domain-security.yml
+  - type: Authentication
+    url: authentication/polygonscan-authentication.yml
   - type: Website
     url: https://polygonscan.com/
   - type: Documentation
