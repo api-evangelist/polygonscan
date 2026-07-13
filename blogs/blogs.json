@@ -2,11 +2,13 @@
   "repo": "polygonscan",
   "feeds": [
     {
-      "source": "https://polygonscan.com/blogs",
+      "source": "https://polygonscan.com/login",
+      "feed_url": "https://polygonscan.com/login",
+      "title": "",
       "saved": 0,
-      "error": "blog page renders as empty error page, no posts retrievable"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T13:03:08Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
