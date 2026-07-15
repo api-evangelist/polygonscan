@@ -61,6 +61,8 @@ apis:
     x-testnetChainId: 80002
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/polygonscan-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/polygonscan-vulnerability-disclosure.yml
   - type: DomainSecurity
