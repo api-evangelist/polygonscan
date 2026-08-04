@@ -1,0 +1,14 @@
+{
+  "provider": "polygonscan",
+  "sources": [
+    "polygonscan-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "polygonscan-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
