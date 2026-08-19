@@ -1,0 +1,155 @@
+{
+  "item": [
+    {
+      "id": "c642ccef-dfcd-4c57-8495-5015771c6bf3",
+      "name": "API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db941163-2f1b-4d4a-9118-3d1da26b1c30",
+          "name": "PolygonScan API",
+          "request": {
+            "name": "PolygonScan API",
+            "description": {
+              "content": "All PolygonScan API calls use this single endpoint. The specific action is determined by the module and action query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "module",
+                  "value": "<string>",
+                  "description": "(Required) API module to call."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "(Required) Action to perform within the selected module."
+                },
+                {
+                  "disabled": false,
+                  "key": "chainid",
+                  "value": "137",
+                  "description": "Chain ID. Use 137 for Polygon PoS mainnet, 80002 for Amoy testnet."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef40954b-794f-4e2f-8772-c4a60e66f6c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chainid",
+                      "value": "137"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"1\",\n  \"message\": \"OK\",\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.etherscan.io/v2/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "81c549b2-3930-44b6-bd99-daa0a29e6d63",
+    "name": "PolygonScan API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for querying Polygon PoS blockchain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics via Etherscan V2 unified endpoint with chainid 137.\n\nContact Support:\n Name: PolygonScan Support\n Email: apisupport@etherscan.io",
+      "type": "text/plain"
+    }
+  }
+}

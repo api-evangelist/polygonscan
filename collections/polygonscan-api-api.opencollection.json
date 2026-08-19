@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PolygonScan API API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PolygonScan API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.etherscan.io/v2/api/",
+            "params": [
+              {
+                "name": "module",
+                "value": "",
+                "type": "query",
+                "description": "API module to call."
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action to perform within the selected module."
+              },
+              {
+                "name": "chainid",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID. Use 137 for Polygon PoS mainnet, 80002 for Amoy testnet."
+              }
+            ]
+          },
+          "docs": "All PolygonScan API calls use this single endpoint. The specific action is determined by the module and action query parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
