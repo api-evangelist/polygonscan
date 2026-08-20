@@ -32,7 +32,8 @@ apis:
   description: The API API from PolygonScan — 1 operation(s) for api.
   humanURL: https://polygonscan.com/apis
   baseURL: https://api.etherscan.io/v2/api
-  tags:
+  tags: []
+  tags_raw:
   - API
   properties:
   - type: OpenAPI
