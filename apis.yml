@@ -1,5 +1,9 @@
 name: PolygonScan
-description: PolygonScan is the leading blockchain explorer, search, API, and analytics platform for the Polygon PoS network. It provides a REST API for querying transactions, token transfers, smart contract source code, ERC-20/ERC-721/ERC-1155 balances, gas prices, and network statistics on the Polygon blockchain (Chain ID 137). API access is unified under Etherscan API V2, enabling access with a single API key across 60+ EVM-compatible chains.
+description: PolygonScan is the leading blockchain explorer, search, API, and analytics platform for the
+  Polygon PoS network. It provides a REST API for querying transactions, token transfers, smart contract
+  source code, ERC-20/ERC-721/ERC-1155 balances, gas prices, and network statistics on the Polygon blockchain
+  (Chain ID 137). API access is unified under Etherscan API V2, enabling access with a single API key
+  across 60+ EVM-compatible chains.
 deliveryModel:
   model: saas
   open_source: false
@@ -28,20 +32,20 @@ accessModel:
   method: derived
 image: https://polygonscan.com/images/svg/brands/main.svg?v=24.1.2.0
 tags:
-  - Blockchain
-  - Polygon
-  - Explorer
-  - Web3
-  - EVM
-  - Smart Contracts
-  - DeFi
-  - Cryptocurrency
+- Blockchain
+- Polygon
+- Explorer
+- Web3
+- EVM
+- Smart Contracts
+- DeFi
+- Cryptocurrency
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: polygonscan:polygonscan-api-api
-  name: PolygonScan API API
+  name: PolygonScan API
   description: The API API from PolygonScan — 1 operation(s) for api.
   humanURL: https://polygonscan.com/apis
   baseURL: https://api.etherscan.io/v2/api
@@ -72,31 +76,31 @@ apis:
   - type: x-json-ld
     url: json-ld/jsonld.json
 common:
-  - type: AgenticAccess
-    url: agentic-access/polygonscan-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/polygonscan-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/polygonscan-domain-security.yml
-  - type: Authentication
-    url: authentication/polygonscan-authentication.yml
-  - type: Website
-    url: https://polygonscan.com/
-  - type: Documentation
-    url: https://docs.etherscan.io/etherscan-v2
-  - type: Signup
-    url: https://polygonscan.com/register
-  - type: Login
-    url: https://polygonscan.com/login
-  - type: Blog
-    url: https://polygonscan.com/blogs
-  - type: Status
-    url: https://etherscan.freshstatus.io/
-  - type: Terms
-    url: https://polygonscan.com/terms
-  - type: Privacy
-    url: https://polygonscan.com/privacypolicy
-  - type: Contact
-    url: https://polygonscan.com/contactus
-  - type: Twitter
-    url: https://twitter.com/polygonscan
+- type: AgenticAccess
+  url: agentic-access/polygonscan-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/polygonscan-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/polygonscan-domain-security.yml
+- type: Authentication
+  url: authentication/polygonscan-authentication.yml
+- type: Website
+  url: https://polygonscan.com/
+- type: Documentation
+  url: https://docs.etherscan.io/etherscan-v2
+- type: Signup
+  url: https://polygonscan.com/register
+- type: Login
+  url: https://polygonscan.com/login
+- type: Blog
+  url: https://polygonscan.com/blogs
+- type: Status
+  url: https://etherscan.freshstatus.io/
+- type: Terms
+  url: https://polygonscan.com/terms
+- type: Privacy
+  url: https://polygonscan.com/privacypolicy
+- type: Contact
+  url: https://polygonscan.com/contactus
+- type: Twitter
+  url: https://twitter.com/polygonscan
