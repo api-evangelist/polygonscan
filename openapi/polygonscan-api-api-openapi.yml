@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PolygonScan API API
+  title: PolygonScan API
   version: '2.0'
   description: REST API for querying Polygon PoS blockchain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics via Etherscan V2 unified endpoint with chainid 137.
   termsOfService: https://polygonscan.com/apiterms
@@ -16,7 +16,7 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: API
+- name: api
 paths:
   /:
     get:
@@ -24,7 +24,7 @@ paths:
       description: All PolygonScan API calls use this single endpoint. The specific action is determined by the module and action query parameters.
       operationId: apiCall
       tags:
-      - API
+      - api
       parameters:
       - name: module
         in: query
