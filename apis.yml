@@ -44,17 +44,16 @@ created: '2026-06-13'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
-- aid: polygonscan:polygonscan-api-api
-  name: PolygonScan API
-  description: The API API from PolygonScan — 1 operation(s) for api.
+- aid: polygonscan:polygonscan-polygonscan-api-api
+  name: PolygonScan PolygonScan API
+  description: The PolygonScan API API from PolygonScan — 1 operation(s) for polygonscan api.
   humanURL: https://polygonscan.com/apis
   baseURL: https://api.etherscan.io/v2/api
-  tags: []
-  tags_raw:
-  - API
+  tags:
+  - PolygonScan API
   properties:
   - type: OpenAPI
-    url: openapi/polygonscan-api-api-openapi.yml
+    url: openapi/polygonscan-polygonscan-api-api-openapi.yml
   - type: Documentation
     url: https://docs.etherscan.io/etherscan-v2
   - type: Authentication
@@ -104,3 +103,5 @@ common:
   url: https://polygonscan.com/contactus
 - type: Twitter
   url: https://twitter.com/polygonscan
+x-parent: etherscan
+x-relationship: product

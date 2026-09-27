@@ -16,7 +16,7 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: api
+- name: PolygonScan API
 paths:
   /:
     get:
@@ -24,7 +24,7 @@ paths:
       description: All PolygonScan API calls use this single endpoint. The specific action is determined by the module and action query parameters.
       operationId: apiCall
       tags:
-      - api
+      - PolygonScan API
       parameters:
       - name: module
         in: query
