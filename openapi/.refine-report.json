@@ -6,9 +6,7 @@
   "outputs": [
     "polygonscan-polygonscan-api-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -16,10 +14,9 @@
     "openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "openapi.json: tagged paths GET / -> PolygonScan API",
     "openapi.json: declared missing tag: PolygonScan API",
-    "superseded outputs removed: polygonscan-api-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 1 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "polygonscan-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "polygonscan-polygonscan-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
