@@ -56,6 +56,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
 components:
+  parameters:
+    chainid:
+      name: chainid
+      in: query
+      required: false
+      schema:
+        type: string
+        default: '137'
+      description: Chain ID. Use 137 for Polygon PoS mainnet, 80002 for Amoy testnet.
   schemas:
     ApiResponse:
       type: object
@@ -70,15 +79,6 @@ components:
           example: OK
         result:
           description: Result data - type varies by endpoint.
-  parameters:
-    chainid:
-      name: chainid
-      in: query
-      required: false
-      schema:
-        type: string
-        default: '137'
-      description: Chain ID. Use 137 for Polygon PoS mainnet, 80002 for Amoy testnet.
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
