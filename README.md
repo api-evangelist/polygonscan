@@ -64,67 +64,138 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-PolygonScan is the leading blockchain explorer, search, API, and analytics platform for the Polygon PoS network (Chain ID 137). It provides a comprehensive REST API for querying on-chain data including account balances, transactions, token transfers, smart contract source code and ABI, event logs, gas prices, and network statistics.
+PolygonScan is the leading blockchain explorer, search, API, and analytics platform for the Polygon PoS network. It provides a REST API for querying transactions, token transfers, smart contract source code, ERC-20/ERC-721/ERC-1155 balances, gas prices, and network statistics on the Polygon blockchain (Chain ID 137). API access is unified under Etherscan API V2, enabling access with a single API key across 60+ EVM-compatible chains.
 
-API access has been unified under Etherscan API V2, enabling a single API key to access 60+ EVM-compatible chains by passing a `chainid` parameter.
+**Areas:** Blockchain · Polygon · Explorer · Web3 · EVM · Smart Contracts · DeFi · Cryptocurrency
 
-## API Base URL
+## PolygonScan on APIs.io
 
-**V2 (current):** `https://api.etherscan.io/v2/api?chainid=137`
+Everything profiled for PolygonScan is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/polygonscan/](https://apis.io/providers/polygonscan/)** — or go straight to one of the APIs or properties below.
 
-**Legacy (deprecated Aug 15, 2025):** `https://api.polygonscan.com/api`
+### APIs (1)
 
-**Amoy Testnet:** `https://api-amoy.polygonscan.com/api` (chainid=80002)
+- [PolygonScan PolygonScan API](https://apis.io/apis/polygonscan/polygonscan-polygonscan-api-api/) — The PolygonScan API API from PolygonScan — 1 operation(s) for polygonscan api.
 
-## Authentication
+### Published properties
 
-All requests require an `apikey` query parameter. Obtain a free API key at [polygonscan.com/myapikey](https://polygonscan.com/myapikey).
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Without a key, requests are limited to 1 call per 5 seconds.
+#### Agentic access (1)
 
-## API Modules
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Module | Description |
-|--------|-------------|
-| `account` | POL/MATIC balances, normal and internal transactions, ERC-20/721/1155 token transfers |
-| `contract` | Smart contract ABI, source code, creation details, verification |
-| `transaction` | Transaction execution status, receipt status |
-| `block` | Block rewards, block number by timestamp, countdown to block |
-| `logs` | Filtered event logs by address and topics |
-| `token` | ERC-20 token info, total supply, holder lists (PRO) |
-| `stats` | POL total supply, POL price, validator set size |
-| `gastracker` | Gas oracle, gas estimation, confirmation times |
-| `proxy` | JSON-RPC proxy methods (eth_blockNumber, eth_getBalance, eth_call, etc.) |
+- [Polygonscan Agentic Access](https://apis.io/agentic-access/polygonscan/polygonscan-agentic-access/)
 
-## Rate Limits
+#### JSON Schema (1)
 
-| Plan | Calls/Second | Daily Calls | Price |
-|------|-------------|-------------|-------|
-| Free | 5 | 100,000 | $0/mo |
-| Lite | 5 | 100,000 | $49/mo |
-| Standard | 10 | 200,000 | $199/mo |
-| Advanced | 20 | 500,000 | $299/mo |
-| Professional | 30 | 1,000,000 | $399/mo |
-| Pro Plus | 30 | 1,500,000 | $899/mo |
+The data models the API reads and writes.
 
-## Quick Start
+- [PolygonScan API Response](https://apis.io/schemas/polygonscan/api-response/)
 
-```
-GET https://api.etherscan.io/v2/api
-  ?chainid=137
-  &module=account
-  &action=balance
-  &address=0x...
-  &tag=latest
-  &apikey=YourApiKey
-```
+#### Examples (4)
 
-## Resources
+Example requests and responses.
 
-- [Explorer](https://polygonscan.com/)
-- [API Documentation](https://docs.etherscan.io/etherscan-v2)
-- [API Registration](https://polygonscan.com/myapikey)
-- [Rate Limits & Errors](https://info.polygonscan.com/api-return-errors/)
-- [API Terms](https://polygonscan.com/apiterms)
-- [V2 Migration Guide](https://docs.etherscan.io/v2-migration)
-- [Contact / Support](mailto:apisupport@etherscan.io)
+- [Get Balance](https://apis.io/examples/polygonscan/get-balance/)
+- [Get Contract Abi](https://apis.io/examples/polygonscan/get-contract-abi/)
+- [Get Gas Oracle](https://apis.io/examples/polygonscan/get-gas-oracle/)
+- [Get Transactions](https://apis.io/examples/polygonscan/get-transactions/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [PolygonScan API API](https://apis.io/collections/polygonscan/open-polygonscan-api-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [PolygonScan — jsonschema rules](https://apis.io/rules/polygonscan/polygonscan-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Polygonscan Authentication](https://apis.io/security/polygonscan/polygonscan-authentication/)
+- [Polygonscan Domain Security](https://apis.io/security/polygonscan/polygonscan-domain-security/)
+- [Polygonscan Vulnerability Disclosure](https://apis.io/security/polygonscan/polygonscan-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/polygonscan/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/polygonscan/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/polygonscan/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://polygonscan.com/)
+- [Documentation](https://docs.etherscan.io/etherscan-v2)
+- [Blog](https://polygonscan.com/blogs)
+
+## API Evangelist rating
+
+**Kin Score 30.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.7 |
+| Contract quality | 45.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 35.5 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/polygonscan/](https://apis.io/providers/polygonscan/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PolygonScan: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/polygonscan/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
